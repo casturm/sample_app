@@ -25,7 +25,7 @@ development:
 #  database: db/test.sqlite3
 #  pool: 5
 #  timeout: 5000
-test:
+test: &test
   adapter: postgresql
   encoding: unicode
   username: postgres
@@ -46,3 +46,6 @@ production:
   pool: 5
   timeout: 5000
 
+
+cucumber:
+  <<: *test
