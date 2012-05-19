@@ -9,6 +9,7 @@ describe "Authentication" do
 
     it { should have_sign_in_header('Sign in') }
     it { should have_selector('title', text: 'Sign in') }
+    it { should have_button('Sign in') }
   end
 
   describe "signin" do
