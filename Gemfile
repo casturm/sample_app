@@ -4,6 +4,9 @@ gem 'rails', '3.2.3'
 gem 'bootstrap-sass', '2.0.0'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'pg', '0.12.2'
+gem 'faker', '1.0.1'
+gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '0.0.6'
 
 group :development, :test do
   gem 'rspec-rails', '2.9.0'
@@ -25,5 +28,7 @@ group :test do
   gem 'factory_girl_rails', '1.4.0'
   gem 'cucumber-rails', '1.2.1', require: false
   gem 'database_cleaner', '0.7.0'
+  gem 'ruby-prof', :git => 'git://github.com/wycats/ruby-prof.git'
+  gem "mocha", :require => false
 end
 
