@@ -20,6 +20,9 @@ describe User do
 
   subject { @user }
 
+  it { should be_valid }
+  it { should_not be_admin }
+
   it { should respond_to(:name) }
   it { should respond_to(:email) }
   it { should respond_to(:password_digest) }
@@ -29,9 +32,7 @@ describe User do
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:microposts) }
-
-  it { should be_valid }
-  it { should_not be_admin }
+  it { should respond_to(:feed) }
 
   describe "accessible attributes should not include admin" do
     let(:accessible_attributes_include_admin) { User.accessible_attributes.include?(:admin) }
@@ -159,6 +160,16 @@ describe User do
       microposts.each do |micropost|
         Micropost.find_by_id(micropost.id).should be_nil
       end
+    end
+
+    describe "status" do
+      let(:unfollowed_post) do
+        FactoryGirl.create(:micropost, user: FactoryGirl.create(:user))
+      end
+
+      its(:feed) { should include(newer_micropost) }
+      its(:feed) { should include(older_micropost) }
+      its(:feed) { should_not include(unfollowed_post) }
     end
   end
 end
