@@ -17,3 +17,6 @@ tmp
 # Ignore idea
 .idea
 
+# Ignore ctags
+.tags
+tags
